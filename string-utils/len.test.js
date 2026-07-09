@@ -32,5 +32,3 @@ describe("Тесты len", () => {
         expect(() => len(undefined)).toThrow(TypeError);
     });
 });
-
-// expect(() => fn()).toThrow(ТипОшибки)

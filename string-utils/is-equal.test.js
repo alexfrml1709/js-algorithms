@@ -23,6 +23,10 @@ describe("Тесты isEqual", () => {
         expect(isEqual("hello", "hello ")).toBe(false)
     });
 
+    test("Должен вернуть false для 'hello ' и 'hello'", () => {
+        expect(isEqual("hello ", "hello")).toBe(false)
+    });
+
     test("Должен вернуть false для 'hello' и ''", () => {
         expect(isEqual("hello", "")).toBe(false)
     });

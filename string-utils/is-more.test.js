@@ -50,4 +50,8 @@ describe("Тест функциии isMore", () => {
     test("Должен выбросить TypeError если хотя бы один из аргументов не строка", () => {
         expect(() => isMore(123, "aaa")).toThrow(TypeError)
     });
+
+    test("Должен вернуть false при 'aaa' и 'ab'", () => {
+        expect(isMore("aaa", "ab")).toBe(false)
+    });
 });

@@ -3,5 +3,10 @@ export function len(string) {
         throw new TypeError("string должен быть строкой");
     };
     
-    return string.length
+    let stringLenght = 0
+    while (string[stringLenght]) {
+        stringLenght++
+    }
+
+    return stringLenght
 };

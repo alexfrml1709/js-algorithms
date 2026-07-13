@@ -23,10 +23,6 @@ describe("Тесты len", () => {
         expect(() => len(123)).toThrow(TypeError)
     });
 
-    test('должен вернуть TypeError для 123', () => {
-        expect(() => len(123)).toThrow(TypeError);
-    });
-
     test('должен вернуть TypeError для null или undefined', () => {
         expect(() => len(null)).toThrow(TypeError);
         expect(() => len(undefined)).toThrow(TypeError);

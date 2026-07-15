@@ -1,11 +1,4 @@
-function len(string) {
-    let stringLenght = 0
-    while (string[stringLenght]) {
-        stringLenght++
-    }
-
-    return stringLenght
-};
+import { len } from "./len.js"
 
 
 export function indexOf(str, search) {
@@ -13,34 +6,18 @@ export function indexOf(str, search) {
         throw new TypeError("Оба аргумента должны быть строками");
     };
 
-    let index = 0
-
-    if (search === "") {
-        return index
-    }
-
     let searchLength = len(search)
-    let searchWindow = ""
+    let strLength = len(str)
 
-    for (let i = 0; i < searchLength; i++) {
-        searchWindow += str[i]
-    }
-
-    let strLenght = len(str)
-
-    for (let i = 0; i < strLenght; i++) {
-        if (searchWindow === search) {
-            return index
-        } else {
-            searchWindow = ""
+    for (let i = 0; i < strLength; i++) {
+        let searchWindow = ""
     
-            for (let j = 0; j < searchLength; j++) {
-                searchWindow += str[i + j]
-            }
+        for (let j = 0; j < searchLength; j++) {
+            searchWindow += str[i + j]
+        }
 
-            if (i !== 0) {
-                index++;
-            }
+        if (searchWindow === search) {
+            return i
         }
     }
 

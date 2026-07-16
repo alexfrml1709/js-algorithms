@@ -8,7 +8,7 @@ export function repeat(str, count = 0) {
     };
 
     let finalStr = ""
-    let intCount = count - (count % 1)
+    const intCount = count - (count % 1)
 
     for (let i = 0; i < intCount; i++) {
         finalStr += str

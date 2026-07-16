@@ -6,13 +6,16 @@ export function endsWith(str, search) {
         throw new TypeError("Оба аргумента должны быть строками");
     };
 
-    let strLength = len(str)
-    let searchLength = len(search)
-    let searchWindow = ""
+    const strLength = len(str)
+    const searchLength = len(search)
+    let searchIndex = searchLength - 1;
 
-    for (let i = searchLength - 1; i >= 0; i--) {
-        searchWindow += str[strLength - (i + 1)]
+    for (let i = strLength - 1; searchIndex >= 0; i--) {
+        if (str[i] !== search[searchIndex]) {
+            return false;
+        }
+        searchIndex--;
     }
 
-    return searchWindow === search
+    return true
 }

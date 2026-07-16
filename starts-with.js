@@ -6,12 +6,18 @@ export function startsWith(str, search) {
         throw new TypeError("Оба аргумента должны быть строками");
     };
 
-    let searchLength = len(search)
-    let searchWindow = ""
+    const strLength = len(str)
+    const searchLength = len(search)
 
-    for (let i = 0; i < searchLength; i++) {
-        searchWindow += str[i]
+    if (searchLength > strLength) {
+        return false
     }
 
-    return searchWindow === search
+    for (let i = 0; i < searchLength; i++) {
+        if (str[i] !== search[i]) {
+            return false
+        }
+    }
+
+    return true
 }

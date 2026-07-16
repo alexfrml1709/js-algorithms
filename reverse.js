@@ -6,7 +6,7 @@ export function reverse(str) {
         throw new TypeError("Аргумент должен быть строкой");
     };
 
-    let strLength = len(str)
+    const strLength = len(str)
     let reversedStr = ""
 
     for (let i = strLength - 1; i >= 0; i--) {

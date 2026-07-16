@@ -6,17 +6,28 @@ export function indexOf(str, search) {
         throw new TypeError("Оба аргумента должны быть строками");
     };
 
-    let searchLength = len(search)
-    let strLength = len(str)
+    if (search === "") {
+        return 0
+    }
 
-    for (let i = 0; i < strLength; i++) {
-        let searchWindow = ""
-    
-        for (let j = 0; j < searchLength; j++) {
-            searchWindow += str[i + j]
+    const searchLength = len(search)
+    const strLength = len(str)
+
+    for (let i = 0; i <= strLength - searchLength; i++) {
+        if (str[i] !== search[0]) {
+            continue
         }
 
-        if (searchWindow === search) {
+        let match = true
+
+        for (let j = 1; j < searchLength; j++) {
+            if (str[i + j] !== search[j]) {
+                match = false
+                break
+            }
+        }
+
+        if (match) {
             return i
         }
     }

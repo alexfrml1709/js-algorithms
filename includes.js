@@ -6,19 +6,31 @@ export function isIncludes(str, search) {
         throw new TypeError("Оба аргумента должны быть строками");
     };
 
-    let searchLength = len(search)
-    let strLength = len(str)
+    if (search === "") {
+        return true
+    }
 
-    for (let i = 0; i < strLength; i++) {
-        let searchWindow = ""
-    
-        for (let j = 0; j < searchLength; j++) {
-            searchWindow += str[i + j]
+    const searchLength = len(search)
+    const strLength = len(str)
+
+    for (let i = 0; i <= strLength - searchLength; i++) {
+        if (search[0] !== str[i]) {
+            continue
         }
 
-        if (searchWindow === search) {
+        let match = true
+
+        for (let j = 1; j < searchLength; j++) {
+            if (search[j] !== str[i + j]) {
+                match = false
+                break
+            }
+        }
+
+        if (match) {
             return true
         }
+
     }
 
     return false

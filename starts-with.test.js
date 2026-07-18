@@ -27,7 +27,8 @@ describe("Тест функции startsWith", () => {
         expect(startsWith("hell", "hell")).toBe(true)
     });
 
-    test("Должен выбросить TypeError при 123 и 'hello'", () => {
+    test("Должен выбросить TypeError если один из аргументов не строка", () => {
         expect(() => startsWith(123, "hello")).toThrow(TypeError)
+        expect(() => startsWith("hello", 123)).toThrow(TypeError)
     });
 });

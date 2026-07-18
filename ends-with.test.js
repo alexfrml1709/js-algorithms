@@ -27,7 +27,8 @@ describe("Тест функции endsWith", () => {
         expect(endsWith("hell", "hell")).toBe(true)
     });
 
-    test("Должен выбросить TypeError при 123 и 'hello'", () => {
+    test("Должен выбросить TypeError если один из аргументов не строка", () => {
         expect(() => endsWith(123, "hello")).toThrow(TypeError)
+        expect(() => endsWith("hello", 123)).toThrow(TypeError)
     });
 });

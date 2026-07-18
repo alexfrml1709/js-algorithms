@@ -51,11 +51,8 @@ describe("Тест функции isIncludes", () => {
         expect(isIncludes("привет", "иве")).toBe(true)
     });
 
-    test("Должен выбросить TypeError при 123 и 'hello'", () => {
+    test("Должен выбросить TypeError если один из аргументов не строка", () => {
         expect(() => isIncludes(123, "hello")).toThrow(TypeError)
-    });
-
-    test("Должен выбросить TypeError при 'hello' и 123", () => {
         expect(() => isIncludes("hello", 123)).toThrow(TypeError)
     });
 });

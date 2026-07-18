@@ -27,7 +27,8 @@ describe("Тест функциии isLessOrEqual", () => {
         expect(isLessOrEqual("", "")).toBe(true)
     });
 
-    test("Должен выбросить TypeError если хотя бы один из аргументов не строка", () => {
-        expect(() => isLessOrEqual(123, "aaa")).toThrow(TypeError)
+    test("Должен выбросить TypeError если один из аргументов не строка", () => {
+        expect(() => isLessOrEqual(123, "hello")).toThrow(TypeError)
+        expect(() => isLessOrEqual("hello", 123)).toThrow(TypeError)
     });
 });

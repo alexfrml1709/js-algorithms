@@ -27,7 +27,8 @@ describe("Тест функции isLess", () => {
         expect(isLess("", "a")).toBe(true)
     });
 
-    test("Должен выбросить TypeError если хотя бы один из аргументов не строка", () => {
-        expect(() => isLess("aaa", 123)).toThrow(TypeError)
+    test("Должен выбросить TypeError если один из аргументов не строка", () => {
+        expect(() => isLess(123, "hello")).toThrow(TypeError)
+        expect(() => isLess("hello", 123)).toThrow(TypeError)
     });
 });

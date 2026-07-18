@@ -5,8 +5,8 @@ export function isEqual(firstStr, secondStr) {
         throw new TypeError("Оба аргумента должны быть строками")
     }
 
-    let firstStrLength = len(firstStr)
-    let secondStrLength = len(secondStr)
+    const firstStrLength = len(firstStr)
+    const secondStrLength = len(secondStr)
     
     if (firstStrLength !== secondStrLength) {
         return false

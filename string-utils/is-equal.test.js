@@ -39,8 +39,9 @@ describe("Тесты isEqual", () => {
         expect(isEqual("привет", "привет")).toBe(true)
     });
 
-    test("Должен выбросить TypeError для 123 и 'hello'", () => {
+    test("Должен выбросить TypeError если один из аргументов не строка", () => {
         expect(() => isEqual(123, "hello")).toThrow(TypeError)
+        expect(() => isEqual("hello", 123)).toThrow(TypeError)
     });
     
     test("Должен выбросить TypeError для 'hello' и null", () => {

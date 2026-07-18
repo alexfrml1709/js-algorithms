@@ -1,21 +1,7 @@
 import { len } from "./len"
+import { isEqual } from "./is-equal"
+import { isMore } from "./is-more"
 
 export function isLessOrEqual(firstStr, secondStr) {
-    if (typeof firstStr !== "string" || typeof secondStr !== "string") {
-        throw new TypeError("Оба аргумента должны быть строками")
-    };
-
-    let firstStrLength = len(firstStr)
-    let secondStrLength = len(secondStr)
-    let minLength = firstStrLength > secondStrLength ? secondStrLength : firstStrLength
-
-    for (let i = 0; i < minLength; i++) {
-        if (firstStr[i].charCodeAt(0) < secondStr[i].charCodeAt(0)) {
-            return true
-        } else if (firstStr[i].charCodeAt(0) > secondStr[i].charCodeAt(0)) {
-            return false
-        }
-    }
-
-    return firstStrLength <= secondStrLength
+    return isEqual(firstStr, secondStr) || !isMore(firstStr, secondStr)
 };

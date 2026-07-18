@@ -19,8 +19,9 @@ describe("Тест функции isNotEqual", () => {
         expect(isNotEqual("", "")).toBe(false)
     });
 
-    test("Должен выбросить TypeError для 123 и 'hello'", () => {
-        expect(() => isNotEqual(123, "hello").toThrow(TypeError))
+    test("Должен выбросить TypeError если один из аргументов не строка", () => {
+        expect(() => isNotEqual(123, "hello")).toThrow(TypeError)
+        expect(() => isNotEqual("hello", 123)).toThrow(TypeError)
     });
 
     test("Должен выбросить TypeError для 'hello' и 'undefined'", () => {

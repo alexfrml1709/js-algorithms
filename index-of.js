@@ -1,6 +1,19 @@
 import { len } from "./len.js"
 
 
+/**
+ * Функция возвращает индекс первого совпадения в строке
+ * @param {string} str - исходная строка
+ * @param {string} search - искомая строка
+ * @returns {number} индекс первого вхождения искомой подстроки или -1, если она не найдена
+ * @throws {TypeError} - если один из аргументов не строка
+ * @example
+ *     indexOf("hello", "ll"); // 2
+ *     indexOf("hello", "o"); // 4
+ *     indexOf("hello", "aa"); // -1
+*/
+
+
 export function indexOf(str, search) {
     if (typeof str !== "string" || typeof search !== "string") {
         throw new TypeError("Оба аргумента должны быть строками");

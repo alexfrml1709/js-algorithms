@@ -1,3 +1,15 @@
+/**
+ * Функция повторяет указанную строку
+ * @param {string} str - исходная строка
+ * @param {number} count - Количество повторений строки
+ * @returns {string} строка, повторенная count раз
+ * @throws {RangeError} - если второй аргумент меньше нуля
+ * @throws {TypeError} - если первый аргумент не строка
+ * @example
+ *     repeat("hi", 2); // "hihi"
+*/
+
+
 export function repeat(str, count = 0) {
     if (count < 0) {
         throw new RangeError("count должен быть больше -1")

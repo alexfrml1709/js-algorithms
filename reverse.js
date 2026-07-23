@@ -7,7 +7,7 @@ import { len } from "./len"
  * @returns {string} строка, которую нужно перевернуть
  * @throws {TypeError} - если аргумент не строка
  * @example
- *     endsWith("hello"); // "olleh"
+ *     reverse("hello"); // "olleh"
 */
 
 

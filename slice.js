@@ -8,6 +8,7 @@ import { substring } from "./substring"
  * @param {number} start - первый индекс искомой строки
  * @param {number} end - последний индекс искомой строки (не учитывается при выводе)
  * @returns {string} строка, с начальным индексом start и конечным end - 1
+ * @throws {TypeError} - если str не является строкой; start или end не являются числами
  * @example
  *     slice("hello", 1, 3); // "el"
  *     slice("hello", )

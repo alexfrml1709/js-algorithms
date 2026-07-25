@@ -3,12 +3,14 @@ import { substring } from "./substring"
 
 
 /**
- * 
- * @param {string} str - исходная строка 
+ * Функция дополняет строку указанными символами до заданной длины.
+ * @param {string} str - исходная строка
  * @param {number} length - целевая длина итоговой строки
  * @param {string} char - символ, которым нужно дополнить исходную строку
  * @param {string} side - сторона для дополнения (left, right или both)
- * @returns {string} строка, дополненная символом char, по стороне side, до длины length 
+ * @returns {string} строка, дополненная символом char, по стороне side, до длины length
+ * @throws {Error} - если "side" не является "left", "right" или "both"
+ * @throws {TypeError} - если str не является строкой
  * @example
  *     pad("qwe", 5, "@"", "right") // "qwe@@"
  *     pad("qwe", 6, "@", "both") // "@qwe@@"
@@ -30,14 +32,14 @@ export function pad(str, length, char, side) {
         return str
     }
 
-    const cycleLen = length - strLen
+    const padLen = length - strLen
     let padStr = ""
 
-    while (len(padStr) < cycleLen) {
+    while (len(padStr) < padLen) {
         padStr += char        
     }
 
-    const finalPad = substring(padStr, 0, cycleLen)
+    const finalPad = substring(padStr, 0, padLen)
 
 
     if (side === "left") {
@@ -47,9 +49,9 @@ export function pad(str, length, char, side) {
         return str + finalPad
 
     } else {
-        const leftLen = Math.floor(cycleLen / 2);
+        const leftLen = Math.floor(padLen / 2);
         const leftChar = substring(finalPad, 0, leftLen)
-        const rightChar = substring(finalPad, leftLen, cycleLen)
+        const rightChar = substring(finalPad, leftLen, padLen)
 
         return leftChar + str + rightChar
     }

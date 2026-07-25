@@ -5,6 +5,7 @@ import { len } from "./len"
  * Функция меняет буквы нижнего регистра на верхний
  * @param {string} str - исходная строка 
  * @returns {string} исходный текст в верхнем регистре
+ * @throws {TypeError} - если str не строка
  * @example
  *     toUpperCase("Hi hElLo!") // "HI HELLO!"
  */

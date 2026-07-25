@@ -1,6 +1,6 @@
 import { len } from "./len"
 import { substring } from "./substring"
-
+    
 
 /**
  * Функция удаляет пробелы в начале и конце строки

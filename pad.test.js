@@ -47,6 +47,9 @@ describe("Тест функции pad", () => {
         expect(pad("hi", 7, "ab", "right")).toBe("hiababa")
     });
 
+    test("Должен вернуть 'abhiaba' при 'hi', 7, 'ab', 'both'", () => {
+        expect(pad("hi", 7, "ab", "both")).toBe("abhiaba")
+    });
 
     test("Должен выбросить Error если both не 'left', 'right' или 'both'", () => {
         expect(() => pad("qwerty", 10, "hi", "top")).toThrow(Error)

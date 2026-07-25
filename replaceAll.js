@@ -20,29 +20,41 @@ export function replaceAll(str, search, replacement) {
         throw new TypeError("Все аргументы должны быть строками");
     }
 
-    let result = ""
-    const strLen = len(str)
+    let result = "";
+    const strLen = len(str);
+    const searchLen = len(search);
 
-    if (search === "") {
+    if (searchLen === 0) {
         for (let i = 0; i < strLen; i++) {
-            result += replacement
-            result += str[i]
+            result += replacement;
+            result += str[i];
         }
-        result += replacement
+        
+        result += replacement;
 
-        return result
+        return result;
     }
-
-    const searchLen = len(search)
 
     for (let i = 0; i < strLen; i++) {
-        if (substring(str, i, i + searchLen) === search) {
-            result += replacement
-            i += searchLen - 1
+        let isMatch = false;
+
+        if (i + searchLen <= strLen) {
+            isMatch = true;
+            for (let j = 0; j < searchLen; j++) {
+                if (str.charCodeAt(i + j) !== search.charCodeAt(j)) {
+                    isMatch = false;
+                    break;
+                }
+            }
+        }
+
+        if (isMatch) {
+            result += replacement;
+            i += searchLen - 1;
         } else {
-            result += str[i]
+            result += str[i];
         }
     }
 
-    return result
+    return result;
 }

@@ -7,6 +7,7 @@ import { len } from "./len"
  * @param {number} start - первый индекс искомой строки
  * @param {number} end - последний индекс искомой строки (не учитывается при выводе)
  * @returns {string} строка, с начальным индексом start и конечным end - 1
+ * @throws {TypeError} - если str не строка; start или end не числа
  * @example
  *     substring("hello", 1, 3); // "el"
  */

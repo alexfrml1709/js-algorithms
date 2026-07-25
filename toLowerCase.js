@@ -5,6 +5,7 @@ import { len } from "./len"
  * Функция меняет буквы вернего регистра на нижний
  * @param {string} str - исходная строка
  * @returns {string} исходный текст в нижнем регистре
+ * @throws {TypeError} - если str не строка
  * @example
  *     toLowerCase("Hi hElLo!") // "hi hello!"
  */

@@ -3,6 +3,12 @@ import { at } from "./at"
 
 
 describe("Тесты функции at", () => {
+    test("Функция не мутирует массив", () => {
+        const arr = [10, 20, 30];
+        at(arr, 1);
+        expect(arr).toEqual([10, 20, 30]);
+    });
+
     test("Должна вернуть 10 для [10, 20, 30] и 0", () => {
         const arr = [10, 20, 30];
         const result = at(arr, 0);

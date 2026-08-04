@@ -3,6 +3,12 @@ import { includes } from "./includes"
 
 
 describe("Тесты функции includes", () => {
+    test("Функция не мутирует массив", () => {
+        const arr = [10, 20, 30];
+        includes(arr, 20);
+        expect(arr).toEqual([10, 20, 30]);
+    });
+
     test("Должна вернуть true для [10, 20, 30] и 20", () => {
         const arr = [10, 20, 30];
         const result = includes(arr, 20);

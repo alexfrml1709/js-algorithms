@@ -3,6 +3,12 @@ import { lastIndexOf } from "./lastIndexOf"
 
 
 describe("Тесты функции lastIndexOf", () => {
+    test("Функция не мутирует массив", () => {
+        const arr = [10, 20, 30];
+        lastIndexOf(arr, 20);
+        expect(arr).toEqual([10, 20, 30]);
+    });
+
     test("Должна вернуть 2 для [10, 20, 10, 30] и 10", () => {
         const arr = [10, 20, 10, 30];
         const result = lastIndexOf(arr, 10);

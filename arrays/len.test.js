@@ -3,6 +3,12 @@ import { len } from "./len"
 
 
 describe("Тесты функции len", () => {
+    test("Функция не мутирует массив", () => {
+        const arr = [10, 20, 30];
+        len(arr);
+        expect(arr).toEqual([10, 20, 30]);
+    });
+
     test("Должна вернуть 3 для [1, 2, 3]", () => {
         const arr = [1, 2, 3];
         const result = len(arr);

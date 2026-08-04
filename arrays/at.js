@@ -14,8 +14,12 @@ import { len } from "./len"
 
 
 export function at(arr, index) {
-    if (!Array.isArray(arr) || typeof index !== "number") {
-        throw new TypeError("arr должен быть массивом, а index числом")
+    if (!Array.isArray(arr)) {
+        throw new TypeError("arr должен быть массивом")
+    }
+
+    if(typeof index !== "number") {
+        throw new TypeError("index должен быть числом")
     }
 
     if (index >= 0) {

@@ -3,6 +3,12 @@ import { indexOf } from "./indexOf"
 
 
 describe("Тесты функции indexOf", () => {
+    test("Функция не мутирует массив", () => {
+        const arr = [10, 20, 30];
+        indexOf(arr, 20);
+        expect(arr).toEqual([10, 20, 30]);
+    });
+
     test("Должна вернуть 1 для [10, 20, 30] и 20", () => {
         const arr = [10, 20, 30];
         const result = indexOf(arr, 20);

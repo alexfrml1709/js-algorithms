@@ -8,6 +8,7 @@ import { len } from "./len";
  * @param {number} start - начальный индекс (включая)
  * @param {number} end - конечный индекс (не включая)
  * @returns {Array} измененный исходный массив
+ * @throws {TypeError} - если arr не массив или start и end не числа
  * @example
  *     fill([10, 20, 30, 40], '*', 1, 3); // [10, '*', '*', 40]
  *     fill([10, 20, 30, 40], '*', -2); // [10, 20, '*', '*']

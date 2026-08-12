@@ -22,8 +22,8 @@ export function map(arr, callback) {
 
     const newArr = [];
 
-    forEach(arr, (item, index, arr) => {
-        const transformed = callback(item, index, arr);
+    forEach(arr, (item, index, array) => {
+        const transformed = callback(item, index, array);
         push(newArr, transformed);
     });
 

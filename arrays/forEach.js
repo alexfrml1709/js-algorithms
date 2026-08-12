@@ -2,7 +2,7 @@ import { len } from "./len"
 
 
 /**
- * Перебирает массив через вызов callback
+ * Перебирает массив через вызов callback (функция иммутабельна)
  * @param {Array<*>} arr - исходный массив для перебора
  * @param {function(*, number, Array): void} callback - функция, вызываемая для каждого элемента
  * @returns {void}

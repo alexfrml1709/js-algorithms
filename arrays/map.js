@@ -1,4 +1,4 @@
-import { len } from "./len"
+import { push } from "./push"
 import { forEach } from "./forEach"
 
 
@@ -20,12 +20,12 @@ export function map(arr, callback) {
         throw new TypeError("callback должен быть функцией")
     }
 
-    const arrLen = len(arr);
     const newArr = [];
 
-    for (let i = 0; i < arrLen; i++) {
-        newArr[i] = callback(arr[i], i, arr);
-    }
+    forEach(arr, (item, index, arr) => {
+        const transformed = callback(item, index, arr);
+        push(newArr, transformed);
+    });
 
     return newArr;
 }

@@ -1,4 +1,3 @@
-// import { len } from "./len";
 import { push } from "./push";
 import { forEach } from "./forEach";
 

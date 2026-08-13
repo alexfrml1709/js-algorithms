@@ -52,5 +52,5 @@ describe("Тесты функции filter", () => {
     test("Должна выбросить TypeError если arr не массив или callback не функция", () => {
         expect(() => filter("qwe", x => {})).toThrow(TypeError);
         expect(() => filter([1, 2], "qwe")).toThrow(TypeError);
-    });filter
+    });
 });

@@ -26,7 +26,7 @@ describe("Тесты функции some", () => {
         expect(result).toBe(false);
     });
 
-    test('Должна остановиться при первом true', () => {
+    test("Должна остановиться при первом true", () => {
         let callCount = 0;
 
         const result = some([5, 10, 15], x => {

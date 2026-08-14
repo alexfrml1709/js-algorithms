@@ -1,6 +1,16 @@
 import { len } from "./len"
 
 
+/**
+ * Функция приводит массив к одному элементу и возвращает его (не мутирует исходный массив)
+ * @param {Array<*>} arr - исходный массив 
+ * @param {function(*, *, number, Array<*>): *} callback - функция, вызываемая для каждого элемента массива
+ * @param {*} initialValue - начальное значение возвращаемого элемента
+ * @returns {*} возвращаемый элемент после приведения массива
+ * @throws {TypeError} - если arr не массив или callback не функция; также если одновременно пуст arr и не указан initialValue 
+ */
+
+
 export function reduce(arr, callback, initialValue) {
     const arrLen = len(arr);
 

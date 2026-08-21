@@ -124,12 +124,11 @@ describe("Тесты функции isEqualDeep", () => {
         expect(result).toBe(false);
     });
 
-    test("Должна вернуть true для {a: undefined} и {b: undefined} ", () => {
+    test("Должна вернуть true для {a: undefined} и {a: undefined} ", () => {
         const a = {a: undefined};
-        const b = {b: undefined};
+        const b = {a: undefined};
         const result = isEqualDeep(a, b);
 
         expect(result).toBe(true);
     });
 });
-

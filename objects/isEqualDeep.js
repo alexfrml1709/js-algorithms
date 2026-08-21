@@ -30,9 +30,14 @@ export function isEqualDeep(a, b) {
         return false;
     }
 
-    for (const key in a) {
-        const isEqualDeepResult = isEqualDeep(a[key], b[key]);
-        if (isEqualDeepResult === false) {
+    for (let i = 0; i < len(aKeys); i++) {
+        const key = aKeys[i];
+
+        if (!Object.prototype.hasOwnProperty.call(b, key)) {
+            return false;
+        }
+
+        if (!isEqualDeep(a[key], b[key])) {
             return false;
         }
     }

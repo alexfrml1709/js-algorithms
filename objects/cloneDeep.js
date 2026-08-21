@@ -3,6 +3,13 @@ import { push } from "../arrays/push";
 import { keys } from "./keys";
 
 
+/**
+ * Создает глубокую копию value (не мутирует исходный элемент, использует рекурсию)
+ * @param {*} value - исходный элемент для копирования
+ * @returns {*} глубокая копия исходника
+ */
+
+
 export function cloneDeep(value) {
     if (typeof value !== "object" || value === null) {
         return value;

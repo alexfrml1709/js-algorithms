@@ -2,6 +2,14 @@ import { len } from "../arrays/len";
 import { keys } from "./keys";
 
 
+/**
+ * Функция глубокого структурного сравнения двух значений (не мутирует исходные элементы, использует рекурсию)
+ * @param {*} a - первый элемент для сравнения
+ * @param {*} b - втророй элемент для сравнения
+ * @returns {boolean} true - если значения структурно идентичны, false - если нет
+ */
+
+
 export function isEqualDeep(a, b) {
     if (typeof a !== typeof b) {
         return false;
@@ -44,6 +52,3 @@ export function isEqualDeep(a, b) {
 
     return true;
 }
-
-
-

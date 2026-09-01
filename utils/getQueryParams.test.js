@@ -59,5 +59,5 @@ describe("Тест функции getQueryParams", () => {
 
     test("Должна выбросить TypeError, если url не строка", () => {
         expect(() => getQueryParams(123).toThrow(TypeError));
-    })
+    });
 });

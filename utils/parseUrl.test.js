@@ -55,5 +55,5 @@ describe("Тест функции parseUrl", () => {
 
     test("Должна выбросить TypeError, если url не строка", () => {
         expect(() => parseUrl(123).toThrow(TypeError));
-    })
+    });
 });

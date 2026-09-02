@@ -29,28 +29,38 @@ export function toCSV(data) {
     let result = join(keysResult) + "\n";
 
     function escapeCSV(item) {
-        item = item == null ? "" : String(item);
+        if (item == null) {
+            return "";
+        }
+
+        const isString = typeof item === 'string';
+        const str = "" + item;
 
         let escapeCSVResult = "";
         let needsQuotes = false;
 
-        for (let i = 0; i < strLen(item); i++) {
-            if (item[i] === ',' || item[i] === '"' || item[i] === '\n') {
+        if (isString) {
+            const num = +str;
+            const isNumericString = (strLen(str) > 0 && num === num);
+        
+            if (isNumericString || str === 'true' || str === 'false' || str === 'null') {
+                needsQuotes = true;
+            }
+        }
+
+        for (let i = 0; i < strLen(str); i++) {
+            if (str[i] === ',' || str[i] === '"' || str[i] === '\n') {
                 needsQuotes = true;
             }
 
-            escapeCSVResult += item[i];
+            escapeCSVResult += str[i];
 
-            if (item[i] === '"') {
-                escapeCSVResult += item[i];
+            if (str[i] === '"') {
+                escapeCSVResult += str[i];
             }
         }
 
-        if (needsQuotes) {
-            escapeCSVResult = '"' + escapeCSVResult + '"';
-        }
-
-        return escapeCSVResult;
+        return needsQuotes ? '"' + escapeCSVResult + '"' : escapeCSVResult;
     }
 
     for (let i = 0; i < arrLen(data); i++) {

@@ -4,12 +4,12 @@ import { push } from "../arrays/push";
 
 
 /**
- * (функция иммутабельна)
- * @param {string} csvString 
- * @returns {object[]}
+ * Функция парсит CSV-строки обратно в массив объектов (функция иммутабельна)
+ * @param {string} csvString - исходная строка для парсинга
+ * @returns {object[]} массив объектов после парсинга строки
  * @throws {TypeError} - если csvString не строка
  * @example
- *     fromCSV(); //
+ *     fromCSV("a,b\n1,2"); // [{a: 1, b: 2}]
  */
 
 

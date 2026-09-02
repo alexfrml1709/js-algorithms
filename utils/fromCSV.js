@@ -1,0 +1,92 @@
+import { len as strLen } from "../len";
+import { len as arrLen } from "../arrays/len";
+import { push } from "../arrays/push";
+
+
+/**
+ * (функция иммутабельна)
+ * @param {string} csvString 
+ * @returns {object[]}
+ * @throws {TypeError} - если csvString не строка
+ * @example
+ *     fromCSV(); //
+ */
+
+
+export function fromCSV(csvString) {
+    if (typeof csvString !== "string") {
+        throw new TypeError("csvString должен быть строкой");
+    }
+
+    let result = [];
+    let currentRow = [];
+    let rows = [];
+    let currentField = '';
+    let inQuotes = false;
+    let isFieldWasQuoted = false;
+
+    for (let i = 0; i < strLen(csvString); i++) {
+        if (inQuotes) {
+            if (csvString[i] === '"' && csvString[i + 1] === '"') {
+                currentField += csvString[i];
+                i++;
+            } else if (csvString[i] === '"') {
+                inQuotes = false;
+            } else {
+                currentField += csvString[i];
+            }
+        } else {
+            if (csvString[i] === '"') {
+                inQuotes = true;
+                isFieldWasQuoted = true;
+            } else if (csvString[i] === ',') {
+                push(currentRow, {value: currentField, quoted: isFieldWasQuoted});
+
+                currentField = "";
+                isFieldWasQuoted = false;
+            } else if (csvString[i] === '\n') {
+                push(currentRow, {value: currentField, quoted: isFieldWasQuoted});
+                push(rows, currentRow);
+                currentField = "";
+                currentRow = [];
+                isFieldWasQuoted = false;
+            } else {
+                currentField += csvString[i];
+            }
+        }
+    }
+
+    if (arrLen(currentRow) > 0 || strLen(currentField) > 0) {
+        push(currentRow, {value: currentField, quoted: isFieldWasQuoted});
+        push(rows, currentRow);
+    }
+
+    for (let i = 1; i < arrLen(rows); i++) {
+        const rowObj = {};
+        
+        for (let j = 0; j < arrLen(rows[i]); j++) {
+            const key = rows[0][j].value;
+            const cell = rows[i][j];
+
+            if (cell.quoted) {
+                rowObj[key] = cell.value;
+            } else {
+                if (cell.value === 'true') {
+                rowObj[key] = true;
+                } else if (cell.value === 'false') {
+                rowObj[key] = false;
+                } else if (cell.value === 'null' || strLen(cell.value) === 0) {
+                rowObj[key] = null;
+                } else {
+                const num = +cell.value;
+
+                rowObj[key] = (num === num) ? num : cell.value;
+                }
+            }
+        }
+
+        push(result, rowObj);
+    }
+
+    return result;
+}

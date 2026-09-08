@@ -30,7 +30,6 @@ export function insertionSort(arr) {
         }
 
         result[j + 1] = currentVal;
-
     }
 
     return result;

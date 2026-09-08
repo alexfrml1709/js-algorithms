@@ -43,6 +43,6 @@ describe("Тест функции selectionSort", () => {
     });
 
     test("Должна выбросить TypeError, если arr не массив", () => {
-        expect(() => selectionSort("qwe")).toThrow(TypeError   );
-    })
+        expect(() => selectionSort("qwe")).toThrow(TypeError);
+    });
 });

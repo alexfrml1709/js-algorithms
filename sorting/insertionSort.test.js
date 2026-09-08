@@ -43,6 +43,6 @@ describe("Тест функции insertionSort", () => {
     });
 
     test("Должна выбросить TypeError, если arr не массив", () => {
-        expect(() => insertionSort("qwe")).toThrow(TypeError   );
-    })
+        expect(() => insertionSort("qwe")).toThrow(TypeError);
+    });
 });

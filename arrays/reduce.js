@@ -27,19 +27,18 @@ export function reduce(arr, callback, initialValue) {
     }
 
     let acc;
+    let startIndex;
 
     if (arguments.length < 3) {
         acc = arr[0];
-
-        for (let i = 1; i < arrLen; i++) {
-            acc = callback(acc, arr[i], i, arr)
-        }
+        startIndex = 1;
     } else {
         acc = initialValue;
+        startIndex = 0;
+    }
 
-        for (let i = 0; i < arrLen; i++) {
-           acc = callback(acc, arr[i], i, arr)
-        }
+    for (let i = startIndex; i < arrLen; i++) {
+        acc = callback(acc, arr[i], i, arr)
     }
 
     return acc;

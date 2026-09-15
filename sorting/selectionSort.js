@@ -1,7 +1,3 @@
-import { len } from "../arrays/len";
-import { slice } from "../arrays/slice";
-
-
 /**
  * Функция сортирует массив чисел по возрастанию методом "выбора" (не мутирует исходный массив)
  * @param {Array<number>} arr - исходный массив для сортировки 
@@ -17,8 +13,8 @@ export function selectionSort(arr) {
         throw new TypeError("arr должен быть массивом")
     }
 
-    const arrLen = len(arr);
-    const result = slice(arr, 0);
+    const arrLen = arr.length;
+    const result = arr.slice();
 
     for (let i = 0; i < arrLen - 1; i++) {
         let minIndex = i;

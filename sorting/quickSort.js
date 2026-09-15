@@ -1,8 +1,3 @@
-import { len } from "../arrays/len";
-import { push } from "../arrays/push";
-import { concat } from "../arrays/concat";
-
-
 /**
  * Функция быстрой сортировки массива чисел по возрастанию (не мутирует исходный массив)
  * @param {Array<number>} arr - исходный массив для сортировки
@@ -18,7 +13,7 @@ export function quickSort(arr) {
         throw new TypeError("arr должен быть массивом")
     }
 
-    const arrLen = len(arr);
+    const arrLen = arr.length;
 
     if (arrLen <= 1) {
         return arr;
@@ -30,11 +25,11 @@ export function quickSort(arr) {
 
     for (let i = 1; i < arrLen; i++) {
         if (pivot > arr[i]) {
-            push(less, arr[i]);
+            less.push(arr[i]);
         } else {
-            push(greater, arr[i]);
+            greater.push(arr[i]);
         }
     }
 
-    return concat(concat(quickSort(less), [pivot]), quickSort(greater));
+    return quickSort(less).concat([pivot], quickSort(greater));
 }

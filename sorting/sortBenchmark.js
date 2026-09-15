@@ -1,5 +1,3 @@
-import { len } from '../arrays/len.js';
-import { push } from '../arrays/push.js';
 import { indexOf } from '../arrays/indexOf.js';
 import { bubbleSort } from './bubbleSort.js';
 import { insertionSort } from './insertionSort.js';
@@ -13,7 +11,7 @@ const RUNS = 5;
 function randomArray(size) {
   const arr = [];
   for (let i = 0; i < size; i++) {
-    push(arr, Math.floor(Math.random() * size));
+    arr.push(Math.floor(Math.random() * size));
   }
   return arr;
 }
@@ -37,8 +35,8 @@ const algorithms = [
   { name: 'quickSort', fn: quickSort },
 ];
 
-const sizesCount = len(SIZES);
-const algorithmsCount = len(algorithms);
+const sizesCount = SIZES.length;
+const algorithmsCount = algorithms.length;
 
 for (let s = 0; s < sizesCount; s++) {
   const input = randomArray(SIZES[s]);
@@ -51,9 +49,9 @@ for (let s = 0; s < sizesCount; s++) {
 }
 
 // Поиск: линейный (indexOf) против бинарного (binarySearch)
-const searchSize = 100000;
+const searchSize = 1000000;
 const sorted = [];
-for (let i = 0; i < searchSize; i++) push(sorted, i); // уже отсортированный массив
+for (let i = 0; i < searchSize; i++) sorted.push(i); // уже отсортированный массив
 const target = searchSize - 1; // ищем последний элемент — худший случай для перебора
 
 const linearSearch = (arr) => indexOf(arr, target);
@@ -67,6 +65,9 @@ console.log('indexOf (перебор): ' + Math.round(linearMs * 100) / 100 + '�
 console.log('binarySearch: ' + Math.round(binaryMs * 100) / 100 + 'мс');
 
 
+
+// БЕЗ ИСПОЛЬЗОВАНИЯ ВСТРОЕННЫХ МЕТОДОВ: 
+
 // • n=100 — bubbleSort: 0.12, insertionSort: 0.04, selectionSort: 0.06, quickSort: 0.22
 // • n=500 — bubbleSort: 0.76, insertionSort: 0.26, selectionSort: 0.49, quickSort: 1.32
 // • n=1000 — bubbleSort: 1.37, insertionSort: 0.54, selectionSort: 1.06, quickSort: 3.1
@@ -77,3 +78,18 @@ console.log('binarySearch: ' + Math.round(binaryMs * 100) / 100 + 'мс');
 // Поиск в массиве из 100000 элементов (ищем 99999)
 // indexOf (перебор): 0.3
 // binarySearch: 0.16
+
+
+
+// С ИСПОЛЬЗОВАНИЕМ ВСТРОЕННЫХ МЕТОДОВ:
+
+// • n=100 — bubbleSort: 0.11, insertionSort: 0.04, selectionSort: 0.06, quickSort: 0.07
+// • n=500 — bubbleSort: 0.64, insertionSort: 0.23, selectionSort: 0.47, quickSort: 0.27
+// • n=1000 — bubbleSort: 1.29, insertionSort: 0.65, selectionSort: 1.03, quickSort: 0.62
+// • n=2000 — bubbleSort: 4.85, insertionSort: 2.04, selectionSort: 4.65, quickSort: 1.42
+// • n=4000 — bubbleSort: 21.3, insertionSort: 8.39, selectionSort: 15.89, quickSort: 2.5
+// • n=8000 — bubbleSort: 127.28, insertionSort: 32.96, selectionSort: 91.1, quickSort: 2.16
+
+// Поиск в массиве из 1000000 элементов (ищем 999999)
+// indexOf (перебор): 2.6
+// binarySearch: 0

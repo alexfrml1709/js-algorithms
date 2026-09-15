@@ -1,6 +1,3 @@
-import { len } from "../arrays/len";
-
-
 /**
  * Функция бинарного поиска числа в отсортированном массиве (не мутирует исходный массив)
  * Если массив не отсортирован - результат не определен
@@ -14,7 +11,11 @@ import { len } from "../arrays/len";
 
 
 export function binarySearch(arr, target) {
-    const arrLen = len(arr);
+    if (!Array.isArray(arr)) {
+        throw new TypeError("arr должен быть массивом");
+    }
+
+    const arrLen = arr.length;
     let leftBorder = 0;
     let rightBorder = arrLen - 1;
 

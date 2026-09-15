@@ -33,12 +33,14 @@ export function isEqualDeep(a, b) {
 
     const aKeys = keys(a);
     const bKeys = keys(b);
+    const aKeysLen = len(aKeys);
+    const bKeysLen = len(bKeys);
 
-    if (len(aKeys) !== len(bKeys)) {
+    if (aKeysLen !== bKeysLen) {
         return false;
     }
 
-    for (let i = 0; i < len(aKeys); i++) {
+    for (let i = 0; i < aKeysLen; i++) {
         const key = aKeys[i];
 
         if (!Object.prototype.hasOwnProperty.call(b, key)) {

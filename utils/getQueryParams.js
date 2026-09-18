@@ -18,9 +18,10 @@ export function getQueryParams(url) {
         throw new TypeError("url должен быть строкой")
     }
 
-    let startIndex = indexOf(url, "?") + 1;
+    let questionMarkIndex = indexOf(url, "?");
+    let startIndex = questionMarkIndex + 1;
 
-    if (indexOf(url, "?") === -1) {
+    if (questionMarkIndex === -1) {
         if (indexOf(url, "=") === -1 && indexOf(url, "&") === -1) {
             return {};
         } else {

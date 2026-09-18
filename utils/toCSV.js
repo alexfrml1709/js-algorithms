@@ -25,6 +25,7 @@ export function toCSV(data) {
         return "";
     }
 
+    const dataLen = arrLen(data);
     let keysResult = keys(data[0]);
     let result = join(keysResult) + "\n";
 
@@ -35,20 +36,20 @@ export function toCSV(data) {
 
         const isString = typeof item === 'string';
         const str = "" + item;
-
+        const stringLen = strLen(str);
         let escapeCSVResult = "";
         let needsQuotes = false;
 
         if (isString) {
             const num = +str;
-            const isNumericString = (strLen(str) > 0 && num === num);
+            const isNumericString = (stringLen > 0 && num === num);
         
             if (isNumericString || str === 'true' || str === 'false' || str === 'null') {
                 needsQuotes = true;
             }
         }
 
-        for (let i = 0; i < strLen(str); i++) {
+        for (let i = 0; i < stringLen; i++) {
             if (str[i] === ',' || str[i] === '"' || str[i] === '\n') {
                 needsQuotes = true;
             }
@@ -63,12 +64,13 @@ export function toCSV(data) {
         return needsQuotes ? '"' + escapeCSVResult + '"' : escapeCSVResult;
     }
 
-    for (let i = 0; i < arrLen(data); i++) {
+    for (let i = 0; i < dataLen; i++) {
         const formatedValues = [];
         const valuesResult = values(data[i]);
+        const valuesResultLen = arrLen(valuesResult);
 
-        for (let j = 0; j < arrLen(valuesResult); j++) {
-            push(formatedValues, escapeCSV(valuesResult[j]))
+        for (let j = 0; j < valuesResultLen; j++) {
+            push(formatedValues, escapeCSV(valuesResult[j]));
         }
 
         result = result + join(formatedValues) + "\n";

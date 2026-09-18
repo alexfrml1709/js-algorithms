@@ -61,10 +61,13 @@ export function fromCSV(csvString) {
         push(rows, currentRow);
     }
 
-    for (let i = 1; i < arrLen(rows); i++) {
+    const rowsLen = arrLen(rows);
+
+    for (let i = 1; i < rowsLen; i++) {
         const rowObj = {};
-        
-        for (let j = 0; j < arrLen(rows[i]); j++) {
+        const iRowsLen = arrLen(rows[i]);
+
+        for (let j = 0; j < iRowsLen; j++) {
             const key = rows[0][j].value;
             const cell = rows[i][j];
 

@@ -16,7 +16,7 @@ export function quickSort(arr) {
     const arrLen = arr.length;
 
     if (arrLen <= 1) {
-        return arr;
+        return arr.slice();
     }
 
     const pivot = arr[0];
